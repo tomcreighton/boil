@@ -3,8 +3,8 @@
   var DEFAULT_SPEED = 100;
   var DEFAULT_SCALE = 3;
   var MAX_FRAMES = 12;
-  var BASE_FREQUENCY = 0.02;
-  var NUM_OCTAVES = 2;
+  var BASE_FREQUENCY = 0.04;
+  var NUM_OCTAVES = 3;
   var SEEDS = [1, 42, 7, 99, 23, 61, 83, 14, 55, 37, 72, 5];
 
   var knownSets = {};
@@ -23,12 +23,18 @@
     for (var i = 0; i < frames; i++) {
       var filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
       filter.setAttribute('id', 'boil-' + key + '-' + i);
+      filter.setAttribute('x', '-10%');
+      filter.setAttribute('y', '-10%');
+      filter.setAttribute('width', '120%');
+      filter.setAttribute('height', '120%');
+      filter.setAttribute('color-interpolation-filters', 'sRGB');
 
       var turb = document.createElementNS('http://www.w3.org/2000/svg', 'feTurbulence');
-      turb.setAttribute('type', 'turbulence');
+      turb.setAttribute('type', 'fractalNoise');
       turb.setAttribute('baseFrequency', BASE_FREQUENCY);
       turb.setAttribute('numOctaves', NUM_OCTAVES);
       turb.setAttribute('seed', SEEDS[i % SEEDS.length]);
+      turb.setAttribute('stitchTiles', 'stitch');
       turb.setAttribute('result', 'noise');
 
       var disp = document.createElementNS('http://www.w3.org/2000/svg', 'feDisplacementMap');
@@ -52,6 +58,10 @@
     defsEl = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
     svg.appendChild(defsEl);
     document.body.appendChild(svg);
+
+    var style = document.createElement('style');
+    style.textContent = '.boil{will-change:filter;isolation:isolate}';
+    document.head.appendChild(style);
   }
 
   function collectElements() {
