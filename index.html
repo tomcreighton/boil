@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Line Boil Demo</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 0 20px;
+      background: #faf9f6;
+      color: #222;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5em;
+    }
+    p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+    }
+    .demo-box {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      border: 3px solid #222;
+      border-radius: 12px;
+      margin: 20px 20px 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      margin: 30px 0;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #ddd;
+      margin: 40px 0;
+    }
+    .sketch-img {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #222;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="boil">Line Boil</h1>
+  <p>Add <code>class="boil"</code> to any element. That's it.</p>
+  <p>Optional: <code>data-boil-scale</code> (intensity, default 3), <code>data-boil-speed</code> (ms per frame, default 100), <code>data-boil-frames</code> (animation steps, 2–12, default 4).</p>
+
+  <hr>
+
+  <h2>Boxes</h2>
+  <div class="demo-row">
+    <div class="demo-box boil">Default</div>
+    <div class="demo-box boil" data-boil-scale="6">Scale 6</div>
+    <div class="demo-box boil" data-boil-scale="1.5">Scale 1.5</div>
+  </div>
+
+  <hr>
+
+  <h2>Speed</h2>
+  <div class="demo-row">
+    <div class="demo-box boil" data-boil-speed="200">Slow (200ms)</div>
+    <div class="demo-box boil" data-boil-speed="50">Fast (50ms)</div>
+  </div>
+
+  <hr>
+
+  <h2>Frames</h2>
+  <div class="demo-row">
+    <div class="demo-box boil" data-boil-frames="2">2 frames</div>
+    <div class="demo-box boil">4 (default)</div>
+    <div class="demo-box boil" data-boil-frames="8">8 frames</div>
+  </div>
+
+  <hr>
+
+  <h2>Text</h2>
+  <p class="boil">This paragraph has the default line boil effect.</p>
+  <p class="boil" data-boil-scale="8">This one is cranked up to scale 8.</p>
+  <p>This paragraph has no effect.</p>
+
+  <script src="line-boil.js"></script>
+</body>
+</html>
